@@ -1,5 +1,4 @@
-﻿@using Vidly.ViewModels
-@model Vidly.ViewModels.RandomMovieViewModel
+﻿@model Vidly.ViewModels.CustomerViewModel
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,15 +17,19 @@
             {
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
-                        <th scope="col">Customer</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Membership Type</th>
+                            <th scope="col">Discount Rate</th>
+                        </tr>
                     </thead>
                     <tbody>
                     @foreach (var customer in Model.Customers)
                     {
                         <tr>
-                            <td>@Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id}, null)</td>
+                            <td>@Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)</td>
+                            <td>@customer.MembershipType.Name</td>
+                            <td>@customer.MembershipType.DiscountRate%</td>
                         </tr>
                     }
                     </tbody>
